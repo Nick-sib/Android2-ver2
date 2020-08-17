@@ -15,7 +15,7 @@ class MyFireBaseMessaging : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
 
 
-        var title = if (remoteMessage.notification == null)
+        val title = if (remoteMessage.notification == null)
                 "Push Message"
             else {
                 Log.d("myLOG", remoteMessage.notification!!.body!!)
@@ -37,9 +37,9 @@ class MyFireBaseMessaging : FirebaseMessagingService() {
         // или управлять подписками приложения на стороне сервера,
         // сохраните этот токен в базе данных. отправьте этот токен вашему
         Log.d("myLOG", "Token " + token)
-        sendRegistrationToServer(token)
+        //sendRegistrationToServer(token)
     }
 
-    private fun sendRegistrationToServer(token: String) {}
+    //private fun sendRegistrationToServer(token: String) {}
 
 }
