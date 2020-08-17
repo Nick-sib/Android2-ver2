@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tvCityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+        android:fontFamily="@font/amiko"
+        android:textColor="#878787"
+        android:textSize="24sp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:text="Имя города, 000000" />
+
+    <TextView
+        android:id="@+id/tvDayOfWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+
+        android:fontFamily="@font/amiko"
+        android:textColor="#878787"
+        app:layout_constraintStart_toStartOf="@+id/tvCityName"
+
+        app:layout_constraintTop_toBottomOf="@+id/tvCityName"
+        tools:text="среда" />
+
+    <TextView
+        android:id="@+id/tvCloudiness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+
+        android:fontFamily="@font/amiko"
+        android:textColor="#878787"
+        app:layout_constraintStart_toStartOf="@+id/tvCityName"
+
+        app:layout_constraintTop_toBottomOf="@+id/tvDayOfWeek"
+        tools:text="Переменная облачность" />
+
+    <ImageView
+        android:id="@+id/ivCloudiness"
+        android:contentDescription="@string/imagedescription"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+
+
+        tools:src="@drawable/ic_empty_24"
+        android:scaleType="centerCrop"
+
+        app:layout_constraintStart_toStartOf="@+id/tvCityName"
+        app:layout_constraintTop_toBottomOf="@+id/tvCloudiness" />
+
+    <TextView
+        android:id="@+id/tvTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+
+        android:textSize="58sp"
+        app:layout_constraintStart_toEndOf="@+id/ivCloudiness"
+
+        app:layout_constraintTop_toBottomOf="@+id/tvCityName"
+        tools:text="26" />
+
+    <TextView
+        android:id="@+id/tvTempVed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+
+        android:textSize="22sp"
+        android:text="@string/litera_gradus"
+
+        app:layout_constraintStart_toEndOf="@+id/tvTemperature"
+        app:layout_constraintTop_toTopOf="@+id/tvTemperature"/>
+
+    <!--пока заглушка-->
+    <TextView
+        android:id="@+id/tvPrecipitation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+
+        android:autoSizeTextType="uniform"
+        android:text="@string/precipitation_probability"
+        tools:targetApi="o"
+
+        android:textColor="#878787"
+        android:textSize="14sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTempVed"
+        app:layout_constraintTop_toTopOf="@+id/tvTemperature" />
+
+    <TextView
+        android:id="@+id/tvHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+
+        android:text="@string/t_humidity"
+        android:textColor="#878787"
+        android:textSize="14sp"
+
+        app:layout_constraintStart_toEndOf="@+id/tvTempVed"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrecipitation"
+        app:layout_constraintBottom_toTopOf="@id/tvWind"/>
+
+    <TextView
+        android:id="@+id/tvWind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+
+        android:text="@string/t_wind"
+        android:textColor="#878787"
+        android:textSize="14sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tvTemperature"
+        app:layout_constraintStart_toEndOf="@+id/tvTempVed" />
+
+    <!--com.jako.android_meteo.meteo_views.LineChartView
+        android:id="@+id/linechart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#CFCFCF"
+        android:padding="16dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Temperature" /-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

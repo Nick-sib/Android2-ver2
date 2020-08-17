@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Android2_Weather</string>
+    <string name="s_nav_setting">Setting</string>
+    <string name="s_nav_empty">Menu item for up heap</string>
+    <string name="s_fragment_primary">Primary Screen</string>
+    <string name="s_mi_theme">Change theme</string>
+    <string name="s_nav_info">About</string>
+    <string name="s_mi_city_list">Change the list of cities</string>
+    <string name="s_mi_email">Feedback / Cellback</string>
+    <string name="s_fab_city">Change city</string>
+    <string name="s_fab_apply">Save changes</string>
+    <string name="s_bar_student_name" translatable="false">Николай Карпик</string>
+    <string name="s_bar_student_email" translatable="false">khc1981@mail.com</string>
+    <string name="s_mi_back">Back</string>
+    <string name="s_bar_close">Collapse dialogue</string>
+    <string name="b_back">Back</string>
+    <string name="b_apply">Apply</string>
+    <string name="invate_input_city_name">Imput city name</string>
+
+    <string name="t_humidity">Humidity: %d%s</string>
+    <string name="t_wind">Wind: %.1f m/s</string>
+    <string name="imagedescription">Weather icon</string>
+    <string name="litera_gradus" translatable="false">°C</string>
+
+    <string-array name="citys_array">
+        <item>Amsterdam,2759794</item>
+        <item>Andorra la Vella,3041563</item>
+        <item>Athens,264371</item>
+        <item>Belgrade,792680</item>
+        <item>Berlin,2950159</item>
+        <item>Berne,2661552</item>
+        <item>Bratislava,3060972</item>
+        <item>Brussels,2800866</item>
+        <item>Bucharest,683506</item>
+        <item>Budapest,3054643</item>
+        <item>Chisinau,618426</item>
+        <item>Copenhagen,2618425</item>
+        <item>Dublin,2964574</item>
+        <item>Helsinki,658225</item>
+        <item>Kyiv,703448</item>
+        <item>Lisbon,2267057</item>
+        <item>Ljubljana,3196359</item>
+        <item>London,2643743</item>
+        <item>Luxembourg,2791993</item>
+        <item>Madrid,3117735</item>
+        <item>Minsk,625144</item>
+        <item>Monaco,2993458</item>
+        <item>Moscow,524901</item>
+        <item>Novosibirsk,1496747</item>
+        <item>Oslo,3143244</item>
+        <item>Paris,2988507</item>
+        <item>Podgorica,3193044</item>
+        <item>Prague,3067696</item>
+        <item>Reykjavik,3413829</item>
+        <item>Riga,456173</item>
+        <item>Rome,3169070</item>
+        <item>San Marino,3168070</item>
+        <item>Sarajevo,3191281</item>
+        <item>Skopje,785842</item>
+        <item>Sofia,727011</item>
+        <item>Stockholm,2673730</item>
+        <item>Tallinn,588409</item>
+        <item>Tirana,3183875</item>
+        <item>Vaduz,3042030</item>
+        <item>Valletta,2562305</item>
+        <item>Vatican City,6691831</item>
+        <item>Vienna,2761369</item>
+        <item>Vilnius,593116</item>
+        <item>Warsaw,756135</item>
+        <item>Zagreb,3186886</item>
+    </string-array>
+    <string name="precipitation_probability">Вероятность осадков:</string>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/mi_city_list"
+            android:icon="@drawable/ic_city_24"
+            android:title="@string/s_mi_city_list"
+            android:checkable="true"/>
+        <item
+            android:id="@+id/mi_email"
+            android:icon="@drawable/ic_email_24"
+            android:title="@string/s_mi_email"
+            android:checkable="true"/>
+        <item
+            android:id="@+id/mi_setting"
+            android:icon="@drawable/ic_settings_24"
+            android:title="@string/s_nav_setting"
+            android:checkable="true"/>
+        <item
+            android:id="@+id/mi_about"
+            android:icon="@drawable/ic_info_24"
+            android:title="@string/s_nav_info"
+            android:checkable="true"/>
+
+        <item
+            android:id="@+id/nav1"
+            android:icon="@drawable/ic_empty_24"
+            android:title="@string/s_nav_empty" />
+        <item
+            android:id="@+id/nav2"
+            android:icon="@drawable/ic_empty_24"
+            android:title="@string/s_nav_empty" />
+        <item
+            android:id="@+id/nav3"
+            android:icon="@drawable/ic_empty_24"
+            android:title="@string/s_nav_empty" />
+        <item
+            android:id="@+id/nav4"
+            android:icon="@drawable/ic_empty_24"
+            android:title="@string/s_nav_empty" />
+        <item
+            android:id="@+id/nav5"
+            android:icon="@drawable/ic_empty_24"
+            android:title="@string/s_nav_empty" />
+        <item
+            android:id="@+id/nav6"
+            android:icon="@drawable/ic_empty_24"
+            android:title="@string/s_nav_empty" />
+        <item
+            android:id="@+id/nav7"
+            android:icon="@drawable/ic_empty_24"
+            android:title="@string/s_nav_empty" />
+        <item
+            android:id="@+id/nav8"
+            android:icon="@drawable/ic_empty_24"
+            android:title="@string/s_nav_empty" />
+        <item
+            android:id="@+id/nav9"
+            android:icon="@drawable/ic_empty_24"
+            android:title="@string/s_nav_empty" />
+    </group>
+</menu>

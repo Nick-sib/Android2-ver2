@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<!--Да это не лучший выбор для первой кнопки главного меню, но пока просто чтобы было-->
+    <item
+        android:id="@+id/mi_theme"
+        android:icon="@drawable/ic_night_24"
+        android:title="@string/s_mi_theme"
+        app:showAsAction="always"/>
+</menu>

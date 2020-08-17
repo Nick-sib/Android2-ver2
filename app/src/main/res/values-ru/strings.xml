@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android2_Weather</string>
+    <string name="s_nav_setting">Setting</string>
+    <string name="s_nav_empty">Menu item for up heap</string>
+    <string name="s_fragment_primary">Primary Screen</string>
+    <string name="s_mi_theme">Change theme</string>
+    <string name="s_nav_info">About</string>
+    <string name="s_mi_city_list">Change the list of cities</string>
+    <string name="s_mi_email">Feedback / Cellback</string>
+    <string name="s_fab_city">Change city</string>
+    <string name="s_fab_apply">Save changes</string>
+    <string name="s_mi_back">Вернуться</string>
+    <string name="s_bar_close">Свернуть диалог</string>
+    <string name="b_back">Вернуться</string>
+    <string name="b_apply">Применить</string>
+    <string name="invate_input_city_name">Введите имя города</string>
+    <string name="t_humidity">Влажность: %d%s</string>
+
+    <string name="t_wind">Ветер: %.1f м/с</string>
+
+    <string-array name="citys_array">
+        <item>Амстердам,2759794</item>
+        <item>Андорра-ла-Велья,3041563</item>
+        <item>Афины,264371</item>
+        <item>Белград,792680</item>
+        <item>Берлин,2950159</item>
+        <item>Берн,2661552</item>
+        <item>Братислава,3060972</item>
+        <item>Брюссель,2800866</item>
+        <item>Будапешт,3054643</item>
+        <item>Бухарест,683506</item>
+        <item>Вадуц,3042030</item>
+        <item>Валлетта,2562305</item>
+        <item>Варшава,756135</item>
+        <item>Ватикан,6691831</item>
+        <item>Вена,2761369</item>
+        <item>Вильнюс,593116</item>
+        <item>Дублин,2964574</item>
+        <item>Загреб,3186886</item>
+        <item>Киев,703448</item>
+        <item>Кишинёв,618426</item>
+        <item>Копенгаген,2618425</item>
+        <item>Лиссабон,2267057</item>
+        <item>Лондон,2643743</item>
+        <item>Любляна,3196359</item>
+        <item>Люксембург,2791993</item>
+        <item>Мадрид,3117735</item>
+        <item>Минск,625144</item>
+        <item>Монако,2993458</item>
+        <item>Москва,524901</item>
+        <item>Новосибирск,1496747</item>
+        <item>Осло,3143244</item>
+        <item>Париж,2988507</item>
+        <item>Подгорица,3193044</item>
+        <item>Прага,3067696</item>
+        <item>Рейкьявик,3413829</item>
+        <item>Рига,456173</item>
+        <item>Рим,3169070</item>
+        <item>Сан-Марино,3168070</item>
+        <item>Сараево,3191281</item>
+        <item>Скопье,785842</item>
+        <item>София,727011</item>
+        <item>Стокгольм,2673730</item>
+        <item>Тирана,3183875</item>
+        <item>Таллин,588409</item>
+        <item>Хельсинки,658225</item>
+    </string-array>
+    <string name="imagedescription">Значёк погоды</string>
+    <string name="precipitation_probability">Вероятность осадков:</string>
+</resources>

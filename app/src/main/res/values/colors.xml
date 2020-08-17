@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#154fbc</color>
+    <color name="colorAccent">#000000</color>
+    <color name="colorSnackbarButton">#ef7f3e</color>
+
+    <color name="colorDrawerIcons">#686868</color>
+    <color name="colorDrawerIconsChecked">#82acf7</color>
+
+    <color name="colorDrawerBackground">#ffffff</color>
+    <color name="colorDrawerBackgroundChecked">#2d76f9</color>
+
+
+    <color name="colorPrimaryNight">@android:color/white</color>
+    <color name="colorSecondaryDay">#2196F3</color>
+
+
+    <color name="music_secondary">@android:color/black</color>
+    <color name="music_on_secondaryDay">@android:color/white</color>
+</resources>

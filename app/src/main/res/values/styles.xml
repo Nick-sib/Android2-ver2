@@ -1,0 +1,11 @@
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorSecondary">@color/colorSecondaryDay</item>
+        <item name="colorOnSecondary">@color/music_on_secondaryDay</item>
+
+
+        <item name="android:colorPrimaryDark">@android:color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+</resources>
