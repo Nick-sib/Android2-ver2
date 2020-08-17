@@ -1,6 +1,12 @@
 package com.nickolay.android2ver2
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import android.os.Bundle
@@ -20,10 +26,15 @@ import com.nickolay.android2ver2.main.CityWeather
 import com.nickolay.android2ver2.main.CitySelect
 import com.nickolay.android2ver2.model.GlobalViewModel
 import com.nickolay.android2ver2.service.CommonWeather
+import com.nickolay.delme.BatteryReceiver
+import com.nickolay.delme.ConnectivityReceiver
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+
+    private  var  batteryReceiver: BroadcastReceiver? = BatteryReceiver()
+    private  var  connectivityReceiver: BroadcastReceiver? = ConnectivityReceiver()
 
     private val PREFS_KEY_THEME = "theme"
     private val THEME_LIGHT = 0
@@ -168,7 +179,25 @@ class MainActivity : AppCompatActivity() {
             else -> changeFragment(CitySelect.newInstance(0))
         }
 
+
     }
+
+
+    private fun regReceivers(){
+        // Программная регистрация ресивера
+        registerReceiver(batteryReceiver, IntentFilter(Intent.ACTION_BATTERY_LOW))
+        registerReceiver(connectivityReceiver, IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"))
+
+        // инициализация канала нотификаций
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val importance = NotificationManager.IMPORTANCE_LOW
+            val channel = NotificationChannel("2", "name", importance)
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
 
 
     private fun BottomAppBar.toggleFabAlignment() {
