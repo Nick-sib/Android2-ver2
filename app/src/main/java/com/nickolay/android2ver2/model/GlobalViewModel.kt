@@ -17,7 +17,7 @@ import java.util.*
 
 class GlobalViewModel (application: Application) : AndroidViewModel(application) {
     private val dataRepository: CityDataRepository
-    val allCitys: LiveData<List<CityData>>
+    val databaseCitys: LiveData<List<CityData>>
 
     val adapter = CityListAdapter()
     val weatherData = MutableLiveData<WeatherData>()
@@ -26,15 +26,19 @@ class GlobalViewModel (application: Application) : AndroidViewModel(application)
         val cityDataDao = CityDataRoomDatabase.getDatabase(application, viewModelScope).cityDataDao()
         dataRepository =
             CityDataRepository(cityDataDao)
-        allCitys = dataRepository.allCitys
+        databaseCitys = dataRepository.allCitys
+//        Log.d("myLOG", "${allCitys.value!!.size}: ")
     }
 
 
-    fun insert(cityData: CityData) = viewModelScope.launch(Dispatchers.IO) {
+    private fun insertWeatherData(cityData: CityData) = viewModelScope.launch(Dispatchers.IO) {
         dataRepository.insert(cityData)
     }
 
     fun setWeatherData(weatherRequest: WeatherRequest) {
+        //сохраняем результат запроса в БД
+        insertWeatherData(CityData(weatherRequest.id, weatherRequest.name, weatherRequest.main.temp, Date().time))
+
         val today = Calendar.getInstance().time
         weatherData.value = adapter.setData(weatherRequest, SimpleDateFormat("EEEE").format(today).capitalize())
     }
