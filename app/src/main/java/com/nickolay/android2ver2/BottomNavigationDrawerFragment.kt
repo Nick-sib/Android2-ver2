@@ -13,6 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.internal.NavigationMenuView
 import com.google.android.material.navigation.NavigationView
 import com.nickolay.android2ver2.main.CitySelect
+import com.nickolay.android2ver2.main.MapFragment
 import kotlinx.android.synthetic.main.fragment_bottom_navigation_drawer.*
 
 class BottomNavigationDrawerFragment(val main: MainActivity): BottomSheetDialogFragment() {
@@ -35,6 +36,9 @@ class BottomNavigationDrawerFragment(val main: MainActivity): BottomSheetDialogF
             when (menuItem.itemId) {
                 R.id.mi_city_list -> {// Переопределить список городов
                     main.changeFragment(CitySelect.newInstance(0))
+                    this.dismiss()}
+                R.id.mi_map -> {// Открываем карту
+                    main.changeFragment(MapFragment())
                     this.dismiss()}
                 R.id.mi_email -> showToastMessage(resources.getText(R.string.s_mi_email))
                 else -> showToastMessage(menuItem.title)

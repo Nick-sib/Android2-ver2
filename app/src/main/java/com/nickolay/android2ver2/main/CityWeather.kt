@@ -38,7 +38,7 @@ class CityWeather : Fragment()/*, OnItemListClick*/ {
             })
 
         currID = Bundle()
-            .getInt(ARG_SECTION_NUMBER, 0)//GlobalViewModel.DEFAULT_ID)
+            .getInt(ARG_SECTION_NUMBER, GlobalViewModel.DEFAULT_ID)
         Log.d("myLOG", "onCreate: currID = $currID")
         CommonWeather.getData(currID, viewModel)
     }

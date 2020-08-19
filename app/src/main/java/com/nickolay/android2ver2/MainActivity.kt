@@ -10,7 +10,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -21,7 +20,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import com.nickolay.android2ver2.adapter.SavedCityListAdapter
 import com.nickolay.android2ver2.main.CityWeather
 import com.nickolay.android2ver2.main.CitySelect
 import com.nickolay.android2ver2.model.GlobalViewModel
@@ -29,7 +27,6 @@ import com.nickolay.android2ver2.service.CommonWeather
 import com.nickolay.delme.BatteryReceiver
 import com.nickolay.delme.ConnectivityReceiver
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -52,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private fun saveKey(key: String, theme: Int) = sharedPrefs.edit().putInt(key, theme).apply()
     private fun loadKey(key: String) = sharedPrefs.getInt(key, 0)
 
-    private var currentFabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+//    private var currentFabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
     private lateinit var viewModel: GlobalViewModel
     private lateinit var addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener
 

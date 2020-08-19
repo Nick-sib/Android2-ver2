@@ -68,4 +68,5 @@
     </string-array>
     <string name="imagedescription">Значёк погоды</string>
     <string name="precipitation_probability">Вероятность осадков:</string>
+    <string name="s_mi_map">Карта</string>
 </resources>
