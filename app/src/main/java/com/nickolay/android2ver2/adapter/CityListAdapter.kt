@@ -1,11 +1,13 @@
 package com.nickolay.android2ver2.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nickolay.android2ver2.R
 import com.nickolay.android2ver2.adapters.CityViewHolder
 import com.nickolay.android2ver2.adapters.OnItemListClick
+import com.nickolay.android2ver2.database.CityData
 import com.nickolay.android2ver2.model.WeatherData
 import com.nickolay.android2ver2.model.WeatherRequest
 
@@ -17,6 +19,7 @@ import kotlin.collections.ArrayList
 class CityListAdapter: RecyclerView.Adapter<CityViewHolder>() {
     private val errorData = WeatherData("Request",0)
 
+    private var databaseList = emptyList<CityData>()
     private var workList: ArrayList<WeatherData> = arrayListOf()
     private var fullList: ArrayList<WeatherData> = ArrayList(workList)
 
@@ -44,7 +47,7 @@ class CityListAdapter: RecyclerView.Adapter<CityViewHolder>() {
                 data.isLoaded = true
                 data.dayWeek = dayWeek
                 data.overcast = request.weather[0].description.capitalize()
-            data.temp = request.main.temp.toInt()
+                data.temp = request.main.temp.toInt()
                 data.humidity = request.main.humidity
                 data.wind = request.wind.speed
                 data.icon = "${request.weather[0].icon}"
@@ -127,6 +130,10 @@ class CityListAdapter: RecyclerView.Adapter<CityViewHolder>() {
         notifyDataSetChanged()
     }
 
-
+    internal fun setDatabaseList(citys: List<CityData>) {
+        databaseList = citys
+        Log.d("myLOG", "setDatabaseList: ${databaseList.size}")
+        //notifyDataSetChanged()
+    }
 
 }

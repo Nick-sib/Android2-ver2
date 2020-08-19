@@ -29,6 +29,7 @@ import com.nickolay.android2ver2.service.CommonWeather
 import com.nickolay.delme.BatteryReceiver
 import com.nickolay.delme.ConnectivityReceiver
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -107,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun showSnackMessage(text: CharSequence) {
+    private fun showSnackMessage(text: CharSequence) {
         Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_SHORT)
             .setAnchorView((if (fab.visibility == View.VISIBLE) fab else bottomAppBar as View))
             .show()
@@ -116,10 +117,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         setContentView(R.layout.activity_main)
-
-
-
 
         //val adapter = SavedCityListAdapter(this)
         viewModel = ViewModelProvider(this).get(GlobalViewModel::class.java).also {
@@ -129,9 +128,9 @@ class MainActivity : AppCompatActivity() {
 //            })
         }
 
-//        viewModel.allCitys.observe(this, Observer { citys ->
-//            citys?.let { adapter.setWords(it) }
-//        })
+        viewModel.databaseCitys.observe(this, Observer { citys ->
+            citys?.let { viewModel.adapter.setDatabaseList(it) }
+        })
 
 
 

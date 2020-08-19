@@ -14,5 +14,5 @@ data class CityData(
         @ColumnInfo(name = "city_tempricha")
         var cityTempricha: Float,
         @ColumnInfo(name = "city_data")
-        var cityData: Int
+        var cityData: Long
     )
