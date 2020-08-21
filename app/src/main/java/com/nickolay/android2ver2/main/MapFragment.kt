@@ -47,6 +47,24 @@ class MapFragment : Fragment(), LocationListener {
             addMarker(latLng)
             CommonWeather.getData(latLng.latitude, latLng.longitude, viewModel)
         }
+
+        locationManager = activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (ActivityCompat.checkSelfPermission(
+                context!!,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+            || ActivityCompat.checkSelfPermission(
+                context!!,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED) {
+            val criteria = Criteria()
+            criteria.accuracy = Criteria.ACCURACY_COARSE
+
+            val provider = locationManager!!.getBestProvider(criteria, true)
+
+            locationManager!!.requestLocationUpdates(provider!!, 10_000, 10F, this)
+
+        }
     }
 
     override fun onCreateView(
@@ -65,31 +83,6 @@ class MapFragment : Fragment(), LocationListener {
         mapFragment?.getMapAsync(callback)
 
         initSearchByAddress()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        locationManager = activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (ActivityCompat.checkSelfPermission(
-                context!!,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-            || ActivityCompat.checkSelfPermission(
-                context!!,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED) {
-            val criteria = Criteria()
-            criteria.accuracy = Criteria.ACCURACY_COARSE
-
-            val provider = locationManager!!.getBestProvider(criteria, true)
-
-            locationManager!!.requestLocationUpdates(provider!!, 10_000, 10F, this)
-
-        }
     }
 
     override fun onPause() {
