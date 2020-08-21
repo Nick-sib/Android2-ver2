@@ -2,9 +2,8 @@ package com.nickolay.android2ver2
 
 import android.app.Dialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.widget.FrameLayout
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -23,13 +22,13 @@ class BottomNavigationDrawerFragment(val main: MainActivity): BottomSheetDialogF
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_bottom_navigation_drawer, container, false)
+        return  inflater.inflate(R.layout.fragment_bottom_navigation_drawer, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //navigation_view.menu.getItem(2).isChecked = true
+        navigationView.menu.findItem(R.id.mi_sing_out).isVisible = main.getSigned()
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // Bottom Navigation Drawer menu item clicks
@@ -40,6 +39,9 @@ class BottomNavigationDrawerFragment(val main: MainActivity): BottomSheetDialogF
                 R.id.mi_map -> {// Открываем карту
                     main.changeFragment(MapFragment())
                     this.dismiss()}
+                R.id.mi_sing_out -> {//разлогониться
+                    main.signOut()
+                }
                 R.id.mi_email -> showToastMessage(resources.getText(R.string.s_mi_email))
                 else -> showToastMessage(menuItem.title)
             }
@@ -96,7 +98,5 @@ class BottomNavigationDrawerFragment(val main: MainActivity): BottomSheetDialogF
         val navigationMenuView = navigationView?.getChildAt(0) as NavigationMenuView
         navigationMenuView.isVerticalScrollBarEnabled = false
     }
-
-
 
 }

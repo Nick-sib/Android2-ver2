@@ -29,7 +29,7 @@ class BottomNavigationDrawerFragment(val main: MainActivity): BottomSheetDialogF
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //navigation_view.menu.getItem(2).isChecked = true
+        navigationView.menu.findItem(R.id.mi_sing_out).isVisible = main.getSigned()
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // Bottom Navigation Drawer menu item clicks

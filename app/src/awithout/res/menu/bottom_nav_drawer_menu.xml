@@ -24,7 +24,10 @@
             android:title="@string/s_nav_info"
             android:checkable="true"/>
 
-
+        <item
+            android:id="@+id/mi_sing_out"
+            android:icon="@drawable/ic_sing_out"
+            android:title="@string/s_mi_sing_out" />
         <item
             android:id="@+id/nav2"
             android:icon="@drawable/ic_empty_24"

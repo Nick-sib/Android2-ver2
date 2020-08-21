@@ -82,6 +82,9 @@ dependencies {
     // UI
     implementation 'com.google.android.material:material:1.2.0'
     releaseImplementation 'com.idescout.sql:sqlscout-server-noop:4.1'
+
+    //google auth
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
