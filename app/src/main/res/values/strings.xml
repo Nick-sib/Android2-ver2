@@ -6,6 +6,7 @@
     <string name="s_mi_theme">Change theme</string>
     <string name="s_nav_info">About</string>
     <string name="s_mi_city_list">Change the list of cities</string>
+    <string name="s_mi_map">Map</string>
     <string name="s_mi_email">Feedback / Cellback</string>
     <string name="s_fab_city">Change city</string>
     <string name="s_fab_apply">Save changes</string>

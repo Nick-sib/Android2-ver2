@@ -9,6 +9,10 @@
             android:title="@string/s_mi_city_list"
             android:checkable="true"/>
         <item
+            android:id="@+id/mi_map"
+            android:icon="@drawable/ic_map_24"
+            android:title="@string/s_mi_map"/>
+        <item
             android:id="@+id/mi_email"
             android:icon="@drawable/ic_email_24"
             android:title="@string/s_mi_email"
@@ -24,10 +28,7 @@
             android:title="@string/s_nav_info"
             android:checkable="true"/>
 
-        <item
-            android:id="@+id/nav1"
-            android:icon="@drawable/ic_empty_24"
-            android:title="@string/s_nav_empty" />
+
         <item
             android:id="@+id/nav2"
             android:icon="@drawable/ic_empty_24"
