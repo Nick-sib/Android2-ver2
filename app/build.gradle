@@ -24,7 +24,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
+        debug {
+            applicationIdSuffix = '.debug'
+        }
 
+        without {
+            initWith debug
+            applicationIdSuffix ".without"
+        }
     }
 
     buildTypes.each {
