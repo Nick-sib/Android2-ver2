@@ -27,12 +27,18 @@ android {
         debug {
             applicationIdSuffix = '.debug'
         }
+    }
 
-        without {
-            initWith debug
-            applicationIdSuffix ".without"
+    flavorDimensions 'geolocation'
+    productFlavors {
+        awithout {
+            dimension 'geolocation'
+        }
+        awith {
+            dimension 'geolocation'
         }
     }
+
 
     buildTypes.each {
         Properties properties = new Properties()
