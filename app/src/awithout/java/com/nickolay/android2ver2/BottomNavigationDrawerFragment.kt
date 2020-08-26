@@ -29,16 +29,13 @@ class BottomNavigationDrawerFragment(val main: MainActivity): BottomSheetDialogF
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //navigation_view.menu.getItem(2).isChecked = true
+        navigationView.menu.findItem(R.id.mi_sing_out).isVisible = main.getSigned()
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // Bottom Navigation Drawer menu item clicks
             when (menuItem.itemId) {
                 R.id.mi_city_list -> {// Переопределить список городов
                     main.changeFragment(CitySelect.newInstance(0))
-                    this.dismiss()}
-                R.id.mi_map -> {// Открываем карту
-                    main.changeFragment(MapFragment())
                     this.dismiss()}
                 R.id.mi_email -> showToastMessage(resources.getText(R.string.s_mi_email))
                 else -> showToastMessage(menuItem.title)

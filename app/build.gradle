@@ -23,7 +23,22 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            applicationIdSuffix = '.debug'
+        }
     }
+
+    flavorDimensions 'geolocation'
+    productFlavors {
+        awithout {
+            dimension 'geolocation'
+        }
+        awith {
+            dimension 'geolocation'
+        }
+    }
+
 
     buildTypes.each {
         Properties properties = new Properties()
@@ -67,6 +82,9 @@ dependencies {
     // UI
     implementation 'com.google.android.material:material:1.2.0'
     releaseImplementation 'com.idescout.sql:sqlscout-server-noop:4.1'
+
+    //google auth
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

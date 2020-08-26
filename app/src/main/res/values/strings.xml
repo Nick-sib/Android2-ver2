@@ -8,8 +8,10 @@
     <string name="s_mi_city_list">Change the list of cities</string>
     <string name="s_mi_map">Map</string>
     <string name="s_mi_email">Feedback / Cellback</string>
+    <string name="s_mi_sing_out">Sing out</string>
     <string name="s_fab_city">Change city</string>
     <string name="s_fab_apply">Save changes</string>
+
     <string name="s_bar_student_name" translatable="false">Николай Карпик</string>
     <string name="s_bar_student_email" translatable="false">khc1981@mail.com</string>
     <string name="s_mi_back">Back</string>
@@ -71,4 +73,5 @@
         <item>Zagreb,3186886</item>
     </string-array>
     <string name="precipitation_probability">Вероятность осадков:</string>
+
 </resources>

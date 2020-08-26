@@ -7,21 +7,29 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import com.nickolay.android2ver2.main.CityWeather
 import com.nickolay.android2ver2.main.CitySelect
+import com.nickolay.android2ver2.main.CityWeather
 import com.nickolay.android2ver2.model.GlobalViewModel
 import com.nickolay.android2ver2.service.CommonWeather
 import com.nickolay.delme.BatteryReceiver
@@ -30,6 +38,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+
+    // Используется, чтобы определить результат активити регистрации через Гугл
+    private val RC_SIGN_IN = 40404
+
+    // Клиент для регистрации пользователя через Гугл
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     private  var  batteryReceiver: BroadcastReceiver? = BatteryReceiver()
     private  var  connectivityReceiver: BroadcastReceiver? = ConnectivityReceiver()
@@ -119,7 +133,10 @@ class MainActivity : AppCompatActivity() {
 
         //val adapter = SavedCityListAdapter(this)
         viewModel = ViewModelProvider(this).get(GlobalViewModel::class.java).also {
-            it.adapter.setLists(resources.getStringArray(R.array.citys_array).toList(), GlobalViewModel.DEFAULT_ID)
+            it.adapter.setLists(
+                resources.getStringArray(R.array.citys_array).toList(),
+                GlobalViewModel.DEFAULT_ID
+            )
 //            it.allCitys.observe(this, Observer { citys ->
 //                citys?.let{ adapter.setWords(citys) }
 //            })
@@ -165,10 +182,33 @@ class MainActivity : AppCompatActivity() {
                 viewModel.adapter.applyCheck()
                 changeFragment(
                     CityWeather
-                        .newInstance(viewModel.adapter.getFirst().id
-                        ))
+                        .newInstance(
+                            viewModel.adapter.getFirst().id
+                        )
+                )
             }
         }
+
+        // Конфигурация запроса на регистрацию пользователя, чтобы получить
+        // идентификатор пользователя, его почту и основной профайл (регулируется параметром)
+
+        // Конфигурация запроса на регистрацию пользователя, чтобы получить
+        // идентификатор пользователя, его почту и основной профайл (регулируется параметром)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+
+        // Получить клиента для регистрации, а также данных по клиенту
+
+        // Получить клиента для регистрации, а также данных по клиенту
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        // кнопка регистрации пользователя
+
+        // кнопка регистрации пользователя
+        signinButton.setOnClickListener(View.OnClickListener {
+            signIn()
+        })
 
         when (currentFragment) {
             0 -> changeFragment(CityWeather.newInstance(GlobalViewModel.DEFAULT_ID))
@@ -176,6 +216,65 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        // Проверим, заходил ли пользователь в этом приложении через Гугл
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        isSigned = account != null
+        enableSign()
+    }
+
+    // Получение результатов от окна регистрации пользователя
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            // Когда сюда возвращается Task, результаты по нему уже готовы.
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+        }
+    }
+
+    // Инициация регистрации пользователя
+    private fun signIn() {
+        Log.d("myLOG", "enableSign: ${bottomAppBar.menu.getItem(1)}")
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    // Выход из учетной записи в приложении
+    fun signOut() {
+
+        googleSignInClient.signOut()
+            .addOnCompleteListener(this) {
+                enableSign()
+            }
+    }
+
+    private fun enableSign(){
+        if (isSigned)
+            signinButton.visibility = View.GONE
+        else
+            signinButton.visibility = View.VISIBLE
+    }
+
+    //https://developers.google.com/identity/sign-in/android/backend-auth?authuser=1
+    // Получение данных пользователя
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+
+            // Регистрация прошла успешно
+            enableSign()
+            isSigned = true
+        } catch (e: ApiException) {
+            isSigned = false
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w("myLOG", "signInResult:failed code=" + e.statusCode)
+        }
     }
 
 
@@ -226,12 +325,17 @@ class MainActivity : AppCompatActivity() {
                 viewModel.adapter.cancelCheck()
                 changeFragment(CityWeather())
             }
+
+
             else -> showSnackMessage(item.title)
         }
         return true
     }
 
+    fun getSigned(): Boolean = isSigned
+
     companion object {
         var currentFragment = 0
+        var isSigned = false
     }
 }
